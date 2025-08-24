@@ -1,4 +1,4 @@
-option(BUILD_VIZINTERFACE "Build VizInterface Module" ON)
+option(BUILD_VIZINTERFACE "Build VizInterface Module" OFF)
 if(NOT BUILD_VIZINTERFACE)
   list(APPEND EXCLUDED_BSK_TARGETS "vizInterface")
 endif()

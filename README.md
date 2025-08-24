@@ -1,5 +1,13 @@
 # README
 
+build script:
+
+```
+cmake -S src -B dist3 -G "Visual Studio 17 2022" -A x64
+cmake --build dist3 --config Release -j
+
+```
+
 ### Basilisk
 
 * [Summary of Basilisk](docs/source/index.rst)
