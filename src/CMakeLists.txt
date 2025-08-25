@@ -393,4 +393,10 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/
     PATTERN "architecture/utilitiesSelfCheck/swigEigenCheck*" EXCLUDE
 )
 
+install(
+  DIRECTORY ${CMAKE_SOURCE_DIR}/../dist3/autoSource/
+  DESTINATION include/Basilisk/autoSource
+  FILES_MATCHING PATTERN "*.h"
+)
+
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/../supportData/ DESTINATION share/Basilisk/supportData)
