@@ -69,7 +69,7 @@ GenCMessages(${LIB_NAME} "${EXTERNAL_MODULES_PATH}")
 
 # Link all necessary libraries
 #target_link_libraries(${LIB_NAME} ArchitectureUtilities)
-target_link_libraries(${LIB_NAME} ${PYTHON3_MODULE})
+# target_link_libraries(${LIB_NAME} ${PYTHON3_MODULE})
 #target_link_libraries(${LIB_NAME} Eigen3::Eigen3)
 
 # define build location, IDE generation specifications

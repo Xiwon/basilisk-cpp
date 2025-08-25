@@ -1,7 +1,7 @@
 
-file(GLOB basilisk_src "*.h" "*.cpp" "*.c" "*.i")
+file(GLOB basilisk_src "*.h" "*.cpp" "*.c")
 
-file(GLOB moduleId "moduleIdGenerator/*.h" "moduleIdGenerator/*.cpp" "moduleIdGenerator/*.i")
+file(GLOB moduleId "moduleIdGenerator/*.h" "moduleIdGenerator/*.cpp")
 
 add_library(ArchitectureUtilities STATIC ${basilisk_src})
 add_library(ModuleIdGenerator SHARED ${moduleId})
@@ -16,17 +16,26 @@ if(NOT WIN32)
   target_compile_options(ModuleIdGenerator PUBLIC "-fPIC")
 endif()
 
-set_target_properties(ArchitectureUtilities PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk")
-set_target_properties(ArchitectureUtilities PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk")
-set_target_properties(ArchitectureUtilities PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk")
+set_target_properties(ArchitectureUtilities PROPERTIES
+  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk"
+  LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk"
+  LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk"
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk"
+  RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk"
+  RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk"
+  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk"
+  ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk"
+  ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk"
+)
 
-set_target_properties(ModuleIdGenerator PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk")
-set_target_properties(ModuleIdGenerator PROPERTIES LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk")
-set_target_properties(ModuleIdGenerator PROPERTIES LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk")
-
-if(WIN32)
-  add_custom_command(
-    TARGET ModuleIdGenerator
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:ModuleIdGenerator> "${CMAKE_BINARY_DIR}/Basilisk/")
-endif()
+set_target_properties(ModuleIdGenerator PROPERTIES
+  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk"
+  LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk"
+  LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk"
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk"
+  RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk"
+  RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk"
+  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Basilisk"
+  ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Basilisk"
+  ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Basilisk"
+)
